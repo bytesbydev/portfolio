@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, GitBranch } from "lucide-react";
 import { projects } from "../data/projects";
 
 const Projects = () => {
@@ -75,7 +75,7 @@ const Projects = () => {
                       aria-label={`View source code for ${project.title}`}
                       className="inline-flex items-center gap-2 font-medium text-slate-700 transition-colors hover:text-black"
                     >
-                      <Github size={18} />
+                      <GitBranch size={18} />
                       Source Code
                     </a>
                   )}
