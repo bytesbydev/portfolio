@@ -68,13 +68,6 @@ src/
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v16 or later)
-- npm
-
 ### Installation
 
 ```bash
