@@ -1,4 +1,4 @@
-# Portfolio
+# 💼 Portfolio
 
 A modern, responsive personal portfolio website built with **React**, **Vite**, and **Tailwind CSS**. It showcases my skills, projects, certifications, and experience through a clean, premium interface.
 
@@ -7,45 +7,48 @@ A modern, responsive personal portfolio website built with **React**, **Vite**, 
 [![Vite](https://img.shields.io/badge/Vite-Build-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-**Live Demo:** [your-portfolio-link.vercel.app](https://your-portfolio-link.vercel.app)
+🔗 **Live Demo:** [your-portfolio-link.vercel.app](https://your-portfolio-link.vercel.app)
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Contact](#contact)
-- [License](#license)
-
----
-
-## Features
-
-- Fully responsive design across desktop, tablet, and mobile
-- Modern, minimal UI/UX
-- Smooth scrolling navigation
-- Hero, About, Skills, Projects, Experience, Certifications, and Contact sections
-- Built with modular, reusable React components
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📂 Project Structure](#-project-structure)
+- [⚙️ Getting Started](#️-getting-started)
+- [📜 Available Scripts](#-available-scripts)
+- [🗺️ Roadmap](#️-roadmap)
+- [📬 Contact](#-contact)
+- [📄 License](#-license)
 
 ---
 
-## Tech Stack
+## ✨ Features
+
+- 📱 Fully responsive design across desktop, tablet, and mobile
+- 🎨 Modern, minimal UI/UX with a premium look and feel
+- 🧭 Smooth scrolling navigation between sections
+- 🏠 Hero, About, Skills, Projects, Experience, Certifications, and Contact sections
+- 🧩 Built with modular, reusable React components
+- ⚡ Fast builds and hot module reload powered by Vite
+- 🌙 Easy to extend with dark mode or new sections
+
+---
+
+## 🛠️ Tech Stack
 
 | Category   | Technology |
 |------------|------------|
-| Framework  | React.js |
-| Build Tool | Vite |
-| Styling    | Tailwind CSS |
-| Language   | JavaScript (ES6+) |
-| Markup     | HTML5, CSS3 |
+| ⚛️ Framework  | React.js |
+| ⚡ Build Tool | Vite |
+| 🎨 Styling    | Tailwind CSS |
+| 📜 Language   | JavaScript (ES6+) |
+| 🧱 Markup     | HTML5, CSS3 |
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 src/
@@ -68,7 +71,14 @@ src/
 
 ---
 
-### Installation
+## ⚙️ Getting Started
+
+### ✅ Prerequisites
+
+- [Node.js](https://nodejs.org/) v16 or later
+- npm (comes bundled with Node.js)
+
+### 📥 Installation
 
 ```bash
 # Clone the repository
@@ -83,24 +93,35 @@ npm install
 
 ---
 
-## Available Scripts
+## 📜 Available Scripts
 
 | Command | Description |
 |---------|--------------|
-| `npm run dev` | Starts the development server |
-| `npm run build` | Builds the app for production |
-| `npm run preview` | Previews the production build locally |
+| `npm run dev` | 🚀 Starts the development server |
+| `npm run build` | 📦 Builds the app for production |
+| `npm run preview` | 👀 Previews the production build locally |
 
 ---
 
-## Contact
+## 🗺️ Roadmap
 
-**Devendra Rawat**
-
-- GitHub: [github.com/bytesbydev](https://github.com/bytesbydev)
+- [ ] Add dark mode toggle
+- [ ] Add blog section
+- [ ] Add project filtering by tech stack
+- [ ] Add animations with Framer Motion
 
 ---
 
-## License
+## 📬 Contact
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+**bytesbydev**
+
+- 🐙 GitHub: [github.com/bytesbydev](https://github.com/bytesbydev)
+
+Feel free to open an issue or reach out with feedback, suggestions, or collaboration ideas! 🙌
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use it as a starting point for your own portfolio ⭐
