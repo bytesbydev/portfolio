@@ -7,7 +7,7 @@ A modern, responsive personal portfolio website built with **React**, **Vite**, 
 [![Vite](https://img.shields.io/badge/Vite-Build-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-🔗 **Live Demo:** [your-portfolio-link.vercel.app](https://your-portfolio-link.vercel.app)
+🔗 **Live Demo:** [https://portfolio-seven-navy-41.vercel.app/](https://portfolio-seven-navy-41.vercel.app/)
 
 ---
 
