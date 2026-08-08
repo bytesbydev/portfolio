@@ -1,80 +1,70 @@
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Heading */}
-        <div className="text-center mb-16">
+    <section id="about" className="bg-white py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900">
             About Me
           </h2>
-
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full mt-4"></div>
+          <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-blue-600"></div>
         </div>
 
-        {/* Glass Card */}
         <div className="relative">
-          {/* Background Blur Effects */}
-          <div className="absolute -top-20 -left-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl"></div>
+          <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl"></div>
 
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl"></div>
-
-          {/* Card */}
-          <div className="relative z-10 rounded-3xl border border-white/50 bg-white/70 backdrop-blur-xl shadow-2xl p-8 md:p-14">
-            <div className="max-w-4xl mx-auto text-center">
-              {/* Quote Icon */}
-              <div className="text-6xl text-blue-600/20 mb-6">
+          <div className="relative z-10 rounded-3xl border border-slate-100 bg-white/80 p-8 shadow-2xl backdrop-blur-xl md:p-14">
+            <div className="mx-auto max-w-4xl text-center">
+              <div
+                className="mb-6 text-6xl text-blue-600/20"
+                aria-hidden="true"
+              >
                 ❝
               </div>
 
-              {/* Heading */}
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-8">
+              <h3 className="mb-8 text-2xl font-bold leading-tight text-slate-900 md:text-4xl">
                 I don't just write code; I{" "}
                 <span className="text-blue-600">
-                  architect digital experiences
+                  build meaningful digital experiences
                 </span>{" "}
-                that bridge the gap between human needs and technical
-                possibilities.
+                that connect human needs with technology.
               </h3>
 
-              {/* Description */}
-              <div className="space-y-6 text-lg text-slate-600 leading-8">
+              <div className="space-y-6 text-base leading-8 text-slate-600 md:text-lg">
                 <p>
-                  My journey as a Frontend Developer is fueled by a relentless
-                  curiosity for the intersection of Cloud infrastructure and
-                  Artificial Intelligence. I believe the most powerful digital
-                  products are the ones that feel effortless—fast, intuitive,
-                  and enjoyable to use.
+                  I'm a frontend developer passionate about building intuitive,
+                  responsive, and user-friendly web applications. My curiosity
+                  extends to cloud computing and artificial intelligence, where
+                  I'm continually exploring new ways to turn ideas into
+                  practical solutions.
                 </p>
 
                 <p>
-                  With a strong foundation in modern web technologies and a keen
-                  eye for clean UI, I transform complex ideas into elegant,
-                  responsive, and high-performance web applications. Every
-                  project is an opportunity to learn, innovate, and create
-                  meaningful user experiences.
+                  With a focus on modern web technologies, clean code, and
+                  thoughtful UI design, I aim to create applications that are
+                  accessible, efficient, and enjoyable to use. Every project
+                  gives me an opportunity to learn, solve problems, and build
+                  something useful.
                 </p>
               </div>
 
-              {/* Bottom Info */}
-              <div className="mt-14 flex flex-wrap justify-center gap-12">
+              <div className="mt-12 flex flex-wrap justify-center gap-8 md:mt-14 md:gap-12">
                 <div>
-                  <p className="text-sm uppercase tracking-widest text-slate-500 mb-2">
+                  <p className="mb-2 text-sm uppercase tracking-widest text-slate-500">
                     Based In
                   </p>
-
                   <h4 className="text-xl font-semibold text-slate-900">
                     India
                   </h4>
                 </div>
 
                 <div>
-                  <p className="text-sm uppercase tracking-widest text-slate-500 mb-2">
+                  <p className="mb-2 text-sm uppercase tracking-widest text-slate-500">
                     Let's Talk
                   </p>
-
                   <a
-                    href="mailto:hello@devchauhan.com"
-                    className="text-xl font-semibold text-blue-600 hover:underline"
+                    href="mailto:devendrarawat9876@gmail.com"
+                    className="break-all text-lg font-semibold text-blue-600 transition-colors hover:text-blue-700 hover:underline md:text-xl"
                   >
                     devendrarawat9876@gmail.com
                   </a>
