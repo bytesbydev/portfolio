@@ -41,56 +41,60 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Heading */}
-        <div className="text-center mb-16">
+    <section id="certifications" className="bg-white py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900">
             Certifications
           </h2>
 
-          <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mt-4" />
+          <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-blue-600" />
 
-          <p className="mt-6 text-slate-600 max-w-2xl mx-auto">
-            Certifications and professional learning that strengthen my
-            knowledge in Web Development, Cloud Computing and Artificial
-            Intelligence.
+          <p className="mx-auto mt-6 max-w-2xl leading-7 text-slate-600">
+            Certifications and learning experiences that reflect my interest
+            in web development, cloud computing, and artificial intelligence.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certifications.map((cert, index) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {certifications.map((cert) => (
             <div
-              key={index}
-              className="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-blue-500 hover:shadow-xl transition duration-300"
+              key={cert.title}
+              className="flex flex-col rounded-2xl border border-slate-200 bg-slate-50 p-6 transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl"
             >
-              <div className="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center mb-5">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100">
                 <Award className="text-blue-600" size={28} />
               </div>
 
-              <h3 className="text-xl font-semibold text-slate-900">
+              <h3 className="text-xl font-semibold leading-snug text-slate-900">
                 {cert.title}
               </h3>
 
-              <p className="text-slate-600 mt-2">
+              <p className="mt-3 text-slate-600">
                 {cert.issuer}
               </p>
 
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="mt-1 text-sm text-slate-500">
                 Issued: {cert.date}
               </p>
 
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 mt-5 text-blue-600 hover:text-blue-700 font-medium"
-              >
-                View Credential
-                <ExternalLink size={16} />
-              </a>
+              <div className="mt-auto pt-6">
+                {cert.link !== "#" ? (
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-medium text-blue-600 transition-colors hover:text-blue-700"
+                  >
+                    View Credential
+                    <ExternalLink size={16} />
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 text-sm text-slate-400">
+                    Credential link unavailable
+                  </span>
+                )}
+              </div>
             </div>
           ))}
         </div>
