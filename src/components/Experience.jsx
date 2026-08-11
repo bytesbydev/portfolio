@@ -2,49 +2,45 @@ import { Briefcase, GraduationCap } from "lucide-react";
 import { experience, education } from "../data/experience";
 
 const Timeline = ({ data, title, Icon, color }) => {
+  const isBlue = color === "blue";
+
   return (
     <div>
-      {/* Heading */}
-
-      <div className="flex items-center gap-3 mb-10">
+      <div className="mb-10 flex items-center gap-3">
         <div
-          className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-            color === "blue" ? "bg-blue-100" : "bg-violet-100"
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
+            isBlue ? "bg-blue-100" : "bg-violet-100"
           }`}
         >
           <Icon
             size={24}
-            className={
-              color === "blue"
-                ? "text-blue-600"
-                : "text-violet-600"
-            }
+            className={isBlue ? "text-blue-600" : "text-violet-600"}
           />
         </div>
 
-        <h2 className="text-3xl font-bold text-slate-900">
+        <h3 className="text-2xl font-bold text-slate-900 sm:text-3xl">
           {title}
-        </h2>
+        </h3>
       </div>
 
-      <div className="relative border-l-2 border-slate-200 ml-5">
+      <div className="relative ml-5 border-l-2 border-slate-200">
         {data.map((item, index) => (
-          <div key={index} className="relative pl-8 pb-12">
-            {/* Dot */}
-
+          <div
+            key={`${item.title}-${item.year}`}
+            className={`relative pb-10 pl-8 ${
+              index === data.length - 1 ? "pb-0" : ""
+            }`}
+          >
             <span
-              className={`absolute -left-[10px] top-2 w-5 h-5 rounded-full border-4 border-white ${
-                color === "blue"
-                  ? "bg-blue-600"
-                  : "bg-violet-600"
+              aria-hidden="true"
+              className={`absolute -left-[10px] top-2 h-5 w-5 rounded-full border-4 border-white ${
+                isBlue ? "bg-blue-600" : "bg-violet-600"
               }`}
             />
 
-            {/* Year */}
-
             <span
-              className={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 ${
-                color === "blue"
+              className={`mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium ${
+                isBlue
                   ? "bg-blue-100 text-blue-700"
                   : "bg-violet-100 text-violet-700"
               }`}
@@ -52,15 +48,15 @@ const Timeline = ({ data, title, Icon, color }) => {
               {item.year}
             </span>
 
-            <h3 className="text-xl font-semibold text-slate-900">
+            <h4 className="text-xl font-semibold leading-snug text-slate-900">
               {item.title}
-            </h3>
+            </h4>
 
-            <p className="text-blue-600 font-medium mt-1">
+            <p className="mt-1 font-medium text-blue-600">
               {item.company}
             </p>
 
-            <p className="mt-4 text-slate-600 leading-7">
+            <p className="mt-4 leading-7 text-slate-600">
               {item.description}
             </p>
           </div>
@@ -72,26 +68,22 @@ const Timeline = ({ data, title, Icon, color }) => {
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="py-24 bg-slate-50"
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900">
+    <section id="experience" className="bg-slate-50 py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
             Experience & Education
           </h2>
 
-          <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mt-4"></div>
+          <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-blue-600" />
 
-          <p className="mt-6 text-slate-600 max-w-2xl mx-auto">
-            My professional journey, internships, and educational background.
+          <p className="mx-auto mt-6 max-w-2xl leading-7 text-slate-600">
+            My professional journey, internships, and educational background,
+            highlighting the experiences that continue to shape my skills.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Timeline
             data={experience}
             title="Experience"
