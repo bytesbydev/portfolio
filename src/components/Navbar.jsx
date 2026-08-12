@@ -7,6 +7,7 @@ const navLinks = [
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
+  { name: "Certifications", href: "#certifications" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -16,30 +17,36 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const sections = navLinks.map((item) =>
-      document.querySelector(item.href)
-    );
+    const sections = navLinks
+      .map((link) => document.querySelector(link.href))
+      .filter(Boolean);
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const link = navLinks.find(
-              (item) => item.href === `#${entry.target.id}`
-            );
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
 
-            if (link) setActive(link.name);
+        if (visibleSections.length > 0) {
+          const current = navLinks.find(
+            (link) => link.href === `#${visibleSections[0].target.id}`
+          );
+
+          if (current) {
+            setActive(current.name);
           }
-        });
+        }
       },
       {
-        threshold: 0.5,
+        rootMargin: "-20% 0px -55% 0px",
+        threshold: [0, 0.25, 0.5, 0.75],
       }
     );
 
-    sections.forEach((section) => {
-      if (section) observer.observe(section);
-    });
+    sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);
@@ -49,91 +56,126 @@ const Navbar = () => {
       setScrolled(window.scrollY > 40);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-md"
-          : "bg-white/70 backdrop-blur-lg"
+          ? "bg-white/90 shadow-md backdrop-blur-xl"
+          : "bg-white/75 backdrop-blur-lg"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <a
           href="#home"
-          className="text-2xl font-bold text-blue-600 tracking-wide"
+          onClick={() => setOpen(false)}
+          className="text-2xl font-bold tracking-wide text-blue-600"
         >
           Dev.
         </a>
 
-        {/* Desktop */}
-
-        <nav className="hidden md:flex items-center gap-10">
+        <nav
+          aria-label="Main navigation"
+          className="hidden items-center gap-5 lg:flex xl:gap-8"
+        >
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`relative pb-1 transition-all duration-300 ${
+              aria-current={active === link.name ? "location" : undefined}
+              className={`relative whitespace-nowrap pb-1 transition-colors duration-300 ${
                 active === link.name
-                  ? "text-blue-600 font-semibold"
+                  ? "font-semibold text-blue-600"
                   : "text-slate-600 hover:text-blue-600"
               }`}
             >
               {link.name}
 
               {active === link.name && (
-                <span className="absolute left-0 bottom-0 h-[2px] w-full bg-blue-600 rounded-full"></span>
+                <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-blue-600" />
               )}
             </a>
           ))}
         </nav>
 
-        {/* Hire Button */}
-
         <a
           href="#contact"
-          className="hidden md:inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition"
+          className="ml-auto mr-4 hidden rounded-full bg-blue-600 px-5 py-2.5 text-white transition-colors hover:bg-blue-700 lg:inline-flex"
         >
           Hire Me
         </a>
 
-        {/* Mobile */}
-
         <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-slate-700"
+          type="button"
+          onClick={() => setOpen((previous) => !previous)}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          className="rounded-lg p-2 text-slate-700 transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-600 lg:hidden"
         >
-          {open ? <X size={28} /> : <Menu size={28} />}
+          {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          open ? "max-h-96" : "max-h-0"
+        id="mobile-navigation"
+        className={`overflow-hidden transition-[max-height] duration-300 lg:hidden ${
+          open ? "max-h-[85vh] overflow-y-auto" : "max-h-0"
         }`}
+        aria-hidden={!open}
       >
-        <div className="bg-white shadow-lg">
+        <nav
+          aria-label="Mobile navigation"
+          className="bg-white shadow-lg"
+        >
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
+              tabIndex={open ? 0 : -1}
+              aria-current={active === link.name ? "location" : undefined}
               onClick={() => setOpen(false)}
-              className={`block px-6 py-4 border-b border-slate-100 ${
+              className={`block border-b border-slate-100 px-6 py-4 transition-colors hover:bg-slate-50 ${
                 active === link.name
-                  ? "text-blue-600 font-semibold"
+                  ? "bg-blue-50 font-semibold text-blue-600"
                   : "text-slate-600"
               }`}
             >
               {link.name}
             </a>
           ))}
-        </div>
+
+          <a
+            href="#contact"
+            tabIndex={open ? 0 : -1}
+            onClick={() => setOpen(false)}
+            className="block px-6 py-4 font-semibold text-blue-600 hover:bg-blue-50"
+          >
+            Hire Me
+          </a>
+        </nav>
       </div>
     </header>
   );
