@@ -1,101 +1,87 @@
-import githubIcon from "../assets/icons/github.svg";
-import externalIcon from "../assets/icons/external-link.svg";
+import { ExternalLink, Github } from "lucide-react";
 import { projects } from "../data/projects";
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900">
+    <section id="projects" className="scroll-mt-20 bg-white py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
             Featured Projects
           </h2>
 
-          <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mt-4"></div>
+          <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-blue-600" />
 
-          <p className="mt-6 text-slate-600 max-w-2xl mx-auto">
-            Some of my recent projects showcasing frontend development,
-            UI/UX, and full-stack capabilities.
+          <p className="mx-auto mt-6 max-w-2xl leading-7 text-slate-600">
+            Explore my projects showcasing frontend development, thoughtful
+            UI design, and full-stack web application development.
           </p>
         </div>
 
-        {/* Cards */}
-
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
           {projects.map((project) => (
-            <div
+            <article
               key={project.id}
-              className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group"
+              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              {/* Image */}
-
-              <div className="overflow-hidden h-60">
+              <div className="h-52 overflow-hidden bg-slate-100 sm:h-60">
                 <img
                   src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  alt={`${project.title} preview`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
-              {/* Content */}
-
-              <div className="p-7">
-                <h3 className="text-2xl font-semibold text-slate-900 mb-3 group-hover:text-blue-600 transition">
+              <div className="flex h-full flex-col p-6 sm:p-7">
+                <h3 className="mb-3 text-xl font-semibold text-slate-900 transition-colors group-hover:text-blue-600 sm:text-2xl">
                   {project.title}
                 </h3>
 
-                <p className="text-slate-600 mb-6 leading-7">
+                <p className="mb-6 leading-7 text-slate-600">
                   {project.description}
                 </p>
 
-                {/* Tech */}
-
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="mb-6 flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium"
+                      className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Buttons */}
+                <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-slate-100 pt-5">
+                  {project.live && project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View live demo of ${project.title}`}
+                      className="inline-flex items-center gap-2 font-medium text-blue-600 transition-colors hover:text-blue-700"
+                    >
+                      <ExternalLink size={18} />
+                      Live Demo
+                    </a>
+                  )}
 
-              <div className="flex gap-4">
-  <a
-    href={project.live}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline"
-  >
-    <img
-      src={externalIcon}
-      alt="External Link"
-      className="w-5 h-5"
-    />
-    Live Demo
-  </a>
-
-  <a
-    href={project.github}
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center gap-2 text-slate-700 hover:text-black"
-  >
-    <img
-      src={githubIcon}
-      alt="GitHub"
-      className="w-5 h-5"
-    />
-    Source Code
-  </a>
-</div>
+                  {project.github && project.github !== "#" && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View source code for ${project.title}`}
+                      className="inline-flex items-center gap-2 font-medium text-slate-700 transition-colors hover:text-black"
+                    >
+                      <Github size={18} />
+                      Source Code
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
