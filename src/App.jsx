@@ -13,7 +13,7 @@ function App() {
     <>
       <Navbar />
 
-      <main className="pt-20">
+      <main id="main-content" className="pt-20">
         <Hero />
         <About />
         <Skills />
