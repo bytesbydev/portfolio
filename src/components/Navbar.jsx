@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -26,8 +27,7 @@ const Navbar = () => {
         const visibleSections = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
+            (a, b) => b.intersectionRatio - a.intersectionRatio
           );
 
         if (visibleSections.length > 0) {
@@ -35,9 +35,7 @@ const Navbar = () => {
             (link) => link.href === `#${visibleSections[0].target.id}`
           );
 
-          if (current) {
-            setActive(current.name);
-          }
+          if (current) setActive(current.name);
         }
       },
       {
@@ -52,15 +50,10 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 40);
 
     handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -69,9 +62,7 @@ const Navbar = () => {
     if (!open) return;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
+      if (event.key === "Escape") setOpen(false);
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -87,18 +78,18 @@ const Navbar = () => {
           : "bg-white/75 backdrop-blur-lg"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+      <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <a
           href="#home"
           onClick={() => setOpen(false)}
-          className="text-2xl font-bold tracking-wide text-blue-600"
+          className="z-10 text-2xl font-bold tracking-wide text-blue-600"
         >
           Dev.
         </a>
 
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-5 lg:flex xl:gap-8"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7"
         >
           {navLinks.map((link) => (
             <a
@@ -146,10 +137,7 @@ const Navbar = () => {
         }`}
         aria-hidden={!open}
       >
-        <nav
-          aria-label="Mobile navigation"
-          className="bg-white shadow-lg"
-        >
+        <nav aria-label="Mobile navigation" className="bg-white shadow-lg">
           {navLinks.map((link) => (
             <a
               key={link.name}
